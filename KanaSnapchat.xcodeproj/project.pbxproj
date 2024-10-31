@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6608AF892CD2E5E8004A7386 /* ElegirUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6608AF882CD2E5E8004A7386 /* ElegirUsuarioViewController.swift */; };
+		6608AF8D2CD2EDCF004A7386 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6608AF8C2CD2EDCF004A7386 /* Usuario.swift */; };
 		665BBAD32CC06005003B27A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BBAD22CC06005003B27A0 /* AppDelegate.swift */; };
 		665BBAD52CC06005003B27A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BBAD42CC06005003B27A0 /* SceneDelegate.swift */; };
 		665BBAD72CC06005003B27A0 /* IniciarSesionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665BBAD62CC06005003B27A0 /* IniciarSesionViewController.swift */; };
@@ -19,10 +21,15 @@
 		6661AAF32CC1817700DF7615 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6661AAF22CC1817700DF7615 /* FirebaseAuth */; };
 		6661AAF52CC1817700DF7615 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6661AAF42CC1817700DF7615 /* FirebaseDatabase */; };
 		6661AAF72CC1817700DF7615 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6661AAF62CC1817700DF7615 /* FirebaseStorage */; };
+		6687C6FA2CC9AEC400B85E4C /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687C6F92CC9AEC400B85E4C /* SnapsViewController.swift */; };
+		6687C6FC2CC9B2C400B85E4C /* ImagenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687C6FB2CC9B2C400B85E4C /* ImagenViewController.swift */; };
 		66E241262CC07BB400936C36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66E241252CC07BB400936C36 /* GoogleService-Info.plist */; };
+		66FA68692CD403660046ED6B /* RegistroUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FA68682CD403650046ED6B /* RegistroUsuarioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6608AF882CD2E5E8004A7386 /* ElegirUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioViewController.swift; sourceTree = "<group>"; };
+		6608AF8C2CD2EDCF004A7386 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		665BBACF2CC06005003B27A0 /* KanaSnapchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanaSnapchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665BBAD22CC06005003B27A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		665BBAD42CC06005003B27A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +38,10 @@
 		665BBADB2CC0600F003B27A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		665BBADE2CC0600F003B27A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		665BBAE02CC0600F003B27A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6687C6F92CC9AEC400B85E4C /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
+		6687C6FB2CC9B2C400B85E4C /* ImagenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagenViewController.swift; sourceTree = "<group>"; };
 		66E241252CC07BB400936C36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66FA68682CD403650046ED6B /* RegistroUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistroUsuarioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6608AF8A2CD2ED09004A7386 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				665BBAD62CC06005003B27A0 /* IniciarSesionViewController.swift */,
+				6687C6FB2CC9B2C400B85E4C /* ImagenViewController.swift */,
+				6687C6F92CC9AEC400B85E4C /* SnapsViewController.swift */,
+				6608AF882CD2E5E8004A7386 /* ElegirUsuarioViewController.swift */,
+				66FA68682CD403650046ED6B /* RegistroUsuarioViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6608AF8B2CD2ED4C004A7386 /* Modelos */ = {
+			isa = PBXGroup;
+			children = (
+				6608AF8C2CD2EDCF004A7386 /* Usuario.swift */,
+			);
+			path = Modelos;
+			sourceTree = "<group>";
+		};
 		665BBAC62CC06005003B27A0 = {
 			isa = PBXGroup;
 			children = (
@@ -70,10 +100,11 @@
 		665BBAD12CC06005003B27A0 /* KanaSnapchat */ = {
 			isa = PBXGroup;
 			children = (
+				6608AF8B2CD2ED4C004A7386 /* Modelos */,
+				6608AF8A2CD2ED09004A7386 /* ViewControllers */,
 				66E241252CC07BB400936C36 /* GoogleService-Info.plist */,
 				665BBAD22CC06005003B27A0 /* AppDelegate.swift */,
 				665BBAD42CC06005003B27A0 /* SceneDelegate.swift */,
-				665BBAD62CC06005003B27A0 /* IniciarSesionViewController.swift */,
 				665BBAD82CC06005003B27A0 /* Main.storyboard */,
 				665BBADB2CC0600F003B27A0 /* Assets.xcassets */,
 				665BBADD2CC0600F003B27A0 /* LaunchScreen.storyboard */,
@@ -165,9 +196,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6687C6FA2CC9AEC400B85E4C /* SnapsViewController.swift in Sources */,
+				6687C6FC2CC9B2C400B85E4C /* ImagenViewController.swift in Sources */,
+				6608AF8D2CD2EDCF004A7386 /* Usuario.swift in Sources */,
 				665BBAD72CC06005003B27A0 /* IniciarSesionViewController.swift in Sources */,
+				66FA68692CD403660046ED6B /* RegistroUsuarioViewController.swift in Sources */,
 				665BBAD32CC06005003B27A0 /* AppDelegate.swift in Sources */,
 				665BBAD52CC06005003B27A0 /* SceneDelegate.swift in Sources */,
+				6608AF892CD2E5E8004A7386 /* ElegirUsuarioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
