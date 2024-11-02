@@ -131,12 +131,24 @@
         <!--Snaps View Controller-->
         <scene sceneID="Fr5-Ka-VU3">
             <objects>
-                <viewController storyboardIdentifier="cerrarSesionTapped" modalPresentationStyle="fullScreen" id="aaB-ON-zoL" customClass="SnapsViewController" customModule="KanaSnapchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cerrarSesionTapped" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="aaB-ON-zoL" customClass="SnapsViewController" customModule="KanaSnapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tM2-N9-bfq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="efT-LJ-khY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Y5O-0d-WCP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="efT-LJ-khY" firstAttribute="top" secondItem="Y5O-0d-WCP" secondAttribute="top" id="E8f-t5-4Ri"/>
+                            <constraint firstItem="efT-LJ-khY" firstAttribute="leading" secondItem="Y5O-0d-WCP" secondAttribute="leading" id="Sfb-fw-mCO"/>
+                            <constraint firstItem="Y5O-0d-WCP" firstAttribute="bottom" secondItem="efT-LJ-khY" secondAttribute="bottom" id="wgL-Wf-4hb"/>
+                            <constraint firstItem="Y5O-0d-WCP" firstAttribute="trailing" secondItem="efT-LJ-khY" secondAttribute="trailing" id="zr1-I9-wlQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hV5-fV-kbq">
                         <barButtonItem key="leftBarButtonItem" title="Cerrar Sesion" id="PaB-DZ-kL8">
@@ -150,6 +162,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tablaSnaps" destination="efT-LJ-khY" id="0W5-LZ-vOW"/>
+                        <segue destination="b5w-b6-cpt" kind="show" identifier="versnapsegue" id="V2V-74-EHH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ow-Sk-EiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMU-zP-9Oy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3463.7681159420295" y="89.732142857142847"/>
+            <point key="canvasLocation" x="3399" y="90"/>
         </scene>
         <!--Lista de Usuarios-->
         <scene sceneID="btD-e0-rqm">
@@ -256,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIa-Sh-JCD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4305.7971014492759" y="89.732142857142847"/>
+            <point key="canvasLocation" x="4170" y="90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="niM-NO-Ufj">
@@ -378,6 +394,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59C-oH-b0N" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1809" y="-619"/>
+        </scene>
+        <!--Ver Snap View Controller-->
+        <scene sceneID="HUL-8x-kCF">
+            <objects>
+                <viewController id="b5w-b6-cpt" customClass="VerSnapViewController" customModule="KanaSnapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tKD-5s-l6e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2c-dd-3qF">
+                                <rect key="frame" x="20" y="108" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imagen Enviada:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPC-UF-Y9Q">
+                                <rect key="frame" x="20" y="149" width="125" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tqf-GE-zRR">
+                                <rect key="frame" x="20" y="190" width="374" height="340"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="340" id="P21-gK-Ekx"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ut8-Sv-Vcb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tqf-GE-zRR" firstAttribute="leading" secondItem="Ut8-Sv-Vcb" secondAttribute="leading" constant="20" id="7cH-hi-qqF"/>
+                            <constraint firstItem="Ut8-Sv-Vcb" firstAttribute="trailing" secondItem="tqf-GE-zRR" secondAttribute="trailing" constant="20" id="MEY-UA-eL5"/>
+                            <constraint firstItem="l2c-dd-3qF" firstAttribute="leading" secondItem="Ut8-Sv-Vcb" secondAttribute="leading" constant="20" id="Npl-tY-6DG"/>
+                            <constraint firstItem="tPC-UF-Y9Q" firstAttribute="top" secondItem="l2c-dd-3qF" secondAttribute="bottom" constant="20" id="Ogi-FG-KPc"/>
+                            <constraint firstItem="Ut8-Sv-Vcb" firstAttribute="trailing" secondItem="l2c-dd-3qF" secondAttribute="trailing" constant="20" id="Q0X-Wh-34Q"/>
+                            <constraint firstItem="tPC-UF-Y9Q" firstAttribute="leading" secondItem="Ut8-Sv-Vcb" secondAttribute="leading" constant="20" id="aBb-l8-EaL"/>
+                            <constraint firstItem="tqf-GE-zRR" firstAttribute="top" secondItem="tPC-UF-Y9Q" secondAttribute="bottom" constant="20" id="qNs-8h-OTw"/>
+                            <constraint firstItem="l2c-dd-3qF" firstAttribute="top" secondItem="Ut8-Sv-Vcb" secondAttribute="top" constant="20" id="sSC-Dn-1gQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6ze-kf-n2U"/>
+                    <connections>
+                        <outlet property="imageView" destination="tqf-GE-zRR" id="poS-IG-DoW"/>
+                        <outlet property="lblMensaje" destination="l2c-dd-3qF" id="4hw-Ek-bLo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xfr-9O-JEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2630" y="810"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5je-G7-e9F">

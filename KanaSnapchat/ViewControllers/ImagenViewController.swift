@@ -24,16 +24,25 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.elegirContactoBoton.isEnabled = true
         let imagenesFolder = Storage.storage().reference().child("imagenes")
         let imageData = imageView.image?.jpegData(compressionQuality: 0.50)
-        let cargarImagen = imagenesFolder.child("\(NSUUID().uuidString).jpg").putData(imageData!, metadata: nil) { (metadata, error) in
+        let cargarImagen = imagenesFolder.child("\(NSUUID().uuidString).jpg")
+            cargarImagen.putData(imageData!, metadata: nil) { (metadata, error) in
             if error != nil {
                 self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al subir la imagen, verifique su conexion a internet y vuelva a acerptarlo", accion: "Aceptar")
                 self.elegirContactoBoton.isEnabled = true
                 print("Ocurrion un error al subir la imagen \(error)")
             } else {
-                self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: nil)
+                cargarImagen.downloadURL(completion: {(url, error) in
+                    guard let enlaceURL = url else{
+                        self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al obtener informacion de la imagen.", accion: "Cancelar")
+                        self.elegirContactoBoton.isEnabled = true
+                        print("Ocurrio un error al obtener informacion de la imagen: \(error)")
+                        return
+                    }
+                    self.performSegue(withIdentifier: "seleccionarContactoSegue", sender: url?.absoluteString)
+                })
             }
         }
-        
+        /*
         let alertaCarga = UIAlertController(title: "Cargando imagen...", message: "0%", preferredStyle: .alert)
         
         let progresoCarga : UIProgressView = UIProgressView(progressViewStyle: .default)
@@ -51,6 +60,7 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         alertaCarga.addAction(btnOK)
         alertaCarga.view.addSubview(progresoCarga)
         present(alertaCarga, animated: true, completion: nil)
+        */
     }
     
     
@@ -71,7 +81,9 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        let siguientVC = segue.destination as! ElegirUsuarioViewController
+        siguientVC.imagenURL = sender as! String
+        siguientVC.descrip = descripcionTextField.text!
     }
     
     func mostrarAlerta (titulo: String, mensaje: String, accion:String) {
