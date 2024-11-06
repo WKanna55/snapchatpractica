@@ -14,6 +14,7 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var descripcionTextField: UITextField!
     @IBOutlet weak var elegirContactoBoton: UIButton!
     var imagePicker = UIImagePickerController()
+    var imagenID = NSUUID().uuidString
     
     @IBAction func camaraTapped(_ sender: Any) {
         imagePicker.sourceType = .savedPhotosAlbum //.camera para activar la camara
@@ -24,7 +25,7 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.elegirContactoBoton.isEnabled = true
         let imagenesFolder = Storage.storage().reference().child("imagenes")
         let imageData = imageView.image?.jpegData(compressionQuality: 0.50)
-        let cargarImagen = imagenesFolder.child("\(NSUUID().uuidString).jpg")
+        let cargarImagen = imagenesFolder.child("\(imagenID).jpg")
             cargarImagen.putData(imageData!, metadata: nil) { (metadata, error) in
             if error != nil {
                 self.mostrarAlerta(titulo: "Error", mensaje: "Se produjo un error al subir la imagen, verifique su conexion a internet y vuelva a acerptarlo", accion: "Aceptar")
@@ -84,6 +85,7 @@ class ImagenViewController: UIViewController, UIImagePickerControllerDelegate, U
         let siguientVC = segue.destination as! ElegirUsuarioViewController
         siguientVC.imagenURL = sender as! String
         siguientVC.descrip = descripcionTextField.text!
+        siguientVC.imagenID = imagenID
     }
     
     func mostrarAlerta (titulo: String, mensaje: String, accion:String) {
