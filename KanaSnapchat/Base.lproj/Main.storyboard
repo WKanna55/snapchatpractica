@@ -138,7 +138,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="efT-LJ-khY">
                                 <rect key="frame" x="0.0" y="147" width="414" height="296"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snapshots recibidos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-2M-dnn">
                                 <rect key="frame" x="0.0" y="108" width="414" height="24"/>
@@ -154,7 +154,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eGz-gS-xRv">
                                 <rect key="frame" x="0.0" y="502" width="414" height="330"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y5O-0d-WCP"/>
@@ -186,12 +186,12 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Mensaje" id="Ncq-s7-QQI">
                                 <connections>
-                                    <segue destination="PSf-2a-bhj" kind="show" id="cAN-WC-W90"/>
+                                    <segue destination="PSf-2a-bhj" kind="show" identifier="mandarFoto" id="cAN-WC-W90"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Audio" id="ofZ-nm-u3g">
                                 <connections>
-                                    <segue destination="hhF-2d-wa6" kind="show" id="bdI-sQ-rXp"/>
+                                    <segue destination="hhF-2d-wa6" kind="show" identifier="grabarAudio" id="bdI-sQ-rXp"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -200,6 +200,7 @@
                         <outlet property="tablaAudios" destination="eGz-gS-xRv" id="RLZ-7L-id9"/>
                         <outlet property="tablaSnaps" destination="efT-LJ-khY" id="0W5-LZ-vOW"/>
                         <segue destination="b5w-b6-cpt" kind="show" identifier="versnapsegue" id="V2V-74-EHH"/>
+                        <segue destination="oRM-lW-Ss7" kind="show" identifier="verAudioSegue" id="LK6-na-so2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ow-Sk-EiP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -579,7 +580,7 @@
             </objects>
             <point key="canvasLocation" x="3399" y="-641"/>
         </scene>
-        <!--Ver Snap View Controller-->
+        <!--Snap recibido-->
         <scene sceneID="HUL-8x-kCF">
             <objects>
                 <viewController id="b5w-b6-cpt" customClass="VerSnapViewController" customModule="KanaSnapchat" customModuleProvider="target" sceneMemberID="viewController">
@@ -619,7 +620,7 @@
                             <constraint firstItem="l2c-dd-3qF" firstAttribute="top" secondItem="Ut8-Sv-Vcb" secondAttribute="top" constant="20" id="sSC-Dn-1gQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="6ze-kf-n2U"/>
+                    <navigationItem key="navigationItem" title="Snap recibido" id="6ze-kf-n2U"/>
                     <connections>
                         <outlet property="imageView" destination="tqf-GE-zRR" id="poS-IG-DoW"/>
                         <outlet property="lblMensaje" destination="l2c-dd-3qF" id="4hw-Ek-bLo"/>
@@ -627,7 +628,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xfr-9O-JEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="810"/>
+            <point key="canvasLocation" x="2174" y="817"/>
+        </scene>
+        <!--Audio recibido-->
+        <scene sceneID="yTB-6w-4gN">
+            <objects>
+                <viewController id="oRM-lW-Ss7" customClass="VerAudioViewController" customModule="KanaSnapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ljF-hq-QZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhY-sE-dA1">
+                                <rect key="frame" x="20" y="98" width="374" height="21"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre del audio: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVw-Vx-dD0">
+                                <rect key="frame" x="20" y="175" width="374" height="21"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;correo&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZu-B2-Pj9">
+                                <rect key="frame" x="20" y="129" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;nombreAudio&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF2-In-DQa">
+                                <rect key="frame" x="20" y="206" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhc-8W-i1U">
+                                <rect key="frame" x="85" y="267" width="244" height="78"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="reproducir" imagePadding="8">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="REPRODUCIR">
+                                            <attributes>
+                                                <font key="NSFont" size="22" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="reproducirReceivedAudioTapped:" destination="oRM-lW-Ss7" eventType="touchUpInside" id="HYW-Iz-SAe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fiw-nU-Z7s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fhc-8W-i1U" firstAttribute="centerX" secondItem="Fiw-nU-Z7s" secondAttribute="centerX" id="4Iw-4I-g2h"/>
+                            <constraint firstItem="jVw-Vx-dD0" firstAttribute="top" secondItem="FZu-B2-Pj9" secondAttribute="bottom" constant="25" id="4d6-jM-hNE"/>
+                            <constraint firstItem="FZu-B2-Pj9" firstAttribute="top" secondItem="rhY-sE-dA1" secondAttribute="bottom" constant="10" id="D34-PM-ltH"/>
+                            <constraint firstItem="FZu-B2-Pj9" firstAttribute="leading" secondItem="Fiw-nU-Z7s" secondAttribute="leading" constant="20" id="FYV-PK-vuu"/>
+                            <constraint firstItem="rhY-sE-dA1" firstAttribute="leading" secondItem="Fiw-nU-Z7s" secondAttribute="leading" constant="20" id="HLT-JD-ive"/>
+                            <constraint firstItem="vF2-In-DQa" firstAttribute="top" secondItem="jVw-Vx-dD0" secondAttribute="bottom" constant="10" id="JOq-4o-4He"/>
+                            <constraint firstItem="rhY-sE-dA1" firstAttribute="top" secondItem="Fiw-nU-Z7s" secondAttribute="top" constant="10" id="MTK-dj-kPb"/>
+                            <constraint firstItem="Fiw-nU-Z7s" firstAttribute="trailing" secondItem="jVw-Vx-dD0" secondAttribute="trailing" constant="20" id="edA-tp-XHQ"/>
+                            <constraint firstItem="Fiw-nU-Z7s" firstAttribute="trailing" secondItem="rhY-sE-dA1" secondAttribute="trailing" constant="20" id="jhi-Ww-ByS"/>
+                            <constraint firstItem="Fiw-nU-Z7s" firstAttribute="trailing" secondItem="vF2-In-DQa" secondAttribute="trailing" constant="20" id="kMv-Zx-xqu"/>
+                            <constraint firstItem="Fiw-nU-Z7s" firstAttribute="trailing" secondItem="FZu-B2-Pj9" secondAttribute="trailing" constant="20" id="lU6-hi-dra"/>
+                            <constraint firstItem="vF2-In-DQa" firstAttribute="leading" secondItem="Fiw-nU-Z7s" secondAttribute="leading" constant="20" id="ljT-N3-WTj"/>
+                            <constraint firstItem="fhc-8W-i1U" firstAttribute="top" secondItem="vF2-In-DQa" secondAttribute="bottom" constant="40" id="s6w-pA-NOc"/>
+                            <constraint firstItem="jVw-Vx-dD0" firstAttribute="leading" secondItem="Fiw-nU-Z7s" secondAttribute="leading" constant="20" id="sC5-zK-sPe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Audio recibido" id="DMi-9j-zPF"/>
+                    <connections>
+                        <outlet property="lblFrom" destination="FZu-B2-Pj9" id="w5d-4g-mik"/>
+                        <outlet property="lblName" destination="vF2-In-DQa" id="5Dh-KN-cII"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3H-bW-nde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3013.04347826087" y="816.96428571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5je-G7-e9F">
@@ -650,7 +731,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="sWb-8g-il0"/>
-        <segue reference="br3-Pt-FI2"/>
+        <segue reference="rHj-FG-RsZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
@@ -675,6 +756,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

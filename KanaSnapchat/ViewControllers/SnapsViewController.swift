@@ -126,6 +126,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let snap = snaps[indexPath.row]
                 cell.textLabel?.text = snap.from
             }
+            cell.backgroundColor = UIColor.systemGray6
             return cell
         } else { //tarea audios
             let cell = UITableViewCell()
@@ -135,6 +136,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let audio = audios[indexPath.row]
                 cell.textLabel?.text = "\(audio.from) - \(audio.name)"
             }
+            cell.backgroundColor = UIColor.systemGray6
             return cell
         }
     }
@@ -145,7 +147,7 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             performSegue(withIdentifier: "versnapsegue", sender: snap)
         } else { // tarea audio
             let audio = audios[indexPath.row]
-            performSegue(withIdentifier: "versnapsegue", sender: audio) //falta implementar
+            performSegue(withIdentifier: "verAudioSegue", sender: audio)
         }
         
     }
@@ -154,6 +156,13 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "versnapsegue" {
             let siguienteVC = segue.destination as! VerSnapViewController
             siguienteVC.snap = sender as! Snap
+        } else if segue.identifier == "verAudioSegue" { // tarea audio
+            let siguienteVC = segue.destination as! VerAudioViewController
+            siguienteVC.audio = sender as! Audio
+        } else if segue.identifier == "grabarAudio" {
+            let siguienteVC = segue.destination as! AudioViewController
+        } else if segue.identifier == "mandarFoto" {
+            let siguienteVC = segue.destination as! ImagenViewController
         }
     }
     
