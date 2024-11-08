@@ -11,8 +11,12 @@ import Firebase
 class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tablaSnaps: UITableView!
+    //tarea audio
+    @IBOutlet weak var tablaAudios: UITableView!
     
     var snaps: [Snap] = []
+    //tarea audio
+    var audios: [Audio] = []
     
     @IBAction func cerrarSesionTapped(_ sender: Any) {
         //dismiss(animated: true, completion: nil)
@@ -46,6 +50,9 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tablaSnaps.delegate = self
         tablaSnaps.dataSource = self
+        // tarea audio
+        tablaAudios.dataSource = self
+        tablaAudios.delegate = self
         
         Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("snaps").observe(DataEventType.childAdded, with: { (snapshot) in
             let snap = Snap()
@@ -68,31 +75,79 @@ class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             self.tablaSnaps.reloadData()
         })
-
+        
+        // -------------- tarea audios --------------
+        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("audios").observe(DataEventType.childAdded, with: { (myaudio) in
+            let audio = Audio()
+            audio.audioURL = (myaudio.value as! NSDictionary)["audioURL"] as! String
+            audio.from = (myaudio.value as! NSDictionary)["from"] as! String
+            audio.name = (myaudio.value as! NSDictionary)["name"] as! String
+            audio.volumen = (myaudio.value as! NSDictionary)["volumen"] as! String
+            audio.id = myaudio.key
+            audio.audioID = (myaudio.value as! NSDictionary)["audioID"] as! String
+            self.audios.append(audio)
+            self.tablaAudios.reloadData()
+        })
+        
+        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("audios").observe(DataEventType.childRemoved, with: { (myaudio) in
+            var iterator = 0
+            for audio in self.audios {
+                if audio.id == myaudio.key{
+                    self.audios.remove(at: iterator)
+                }
+                iterator += 1
+            }
+            self.tablaAudios.reloadData()
+        })
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if snaps.count == 0 {
-            return 1
-        } else {
-            return snaps.count
+        if tableView == tablaSnaps {
+            if snaps.count == 0 {
+                return 1
+            } else {
+                return snaps.count
+            }
+        } else { //tarea audio
+            if audios.count == 0 {
+                return 1
+            } else {
+                return audios.count
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        if snaps.count == 0 {
-            cell.textLabel?.text = "No tienes Snaps 😭"
-        } else {
-            let snap = snaps[indexPath.row]
-            cell.textLabel?.text = snap.from
+        if tableView == tablaSnaps {
+            let cell = UITableViewCell()
+            if snaps.count == 0 {
+                cell.textLabel?.text = "No tienes Snaps 😭"
+            } else {
+                let snap = snaps[indexPath.row]
+                cell.textLabel?.text = snap.from
+            }
+            return cell
+        } else { //tarea audios
+            let cell = UITableViewCell()
+            if audios.count == 0 {
+                cell.textLabel?.text = "No tienes Audios 📢"
+            } else {
+                let audio = audios[indexPath.row]
+                cell.textLabel?.text = "\(audio.from) - \(audio.name)"
+            }
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let snap = snaps[indexPath.row]
-        performSegue(withIdentifier: "versnapsegue", sender: snap)
+        if tableView == tablaSnaps {
+            let snap = snaps[indexPath.row]
+            performSegue(withIdentifier: "versnapsegue", sender: snap)
+        } else { // tarea audio
+            let audio = audios[indexPath.row]
+            performSegue(withIdentifier: "versnapsegue", sender: audio) //falta implementar
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
